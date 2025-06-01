@@ -1,50 +1,51 @@
 import { useState } from 'react';
 
-import { navLinks } from '../constants/index.js';
-
-const NavItems = ({ onClick = () => {} }) => (
-  <ul className="nav-ul">
-    {navLinks.map((item) => (
-      <li key={item.id} className="nav-li">
-        <a href={item.href} className="nav-li_a" onClick={onClick}>
-          {item.name}
-        </a>
-      </li>
-    ))}
-  </ul>
-);
+const navLinks = [
+  { name: 'file', href: '#home' },
+  { name: 'edit', href: '#about' },
+  { name: 'view', href: '#projects' },
+];
 
 const Navbar = () => {
-  const [isOpen, setIsOpen] = useState(false);
-
-  const toggleMenu = () => setIsOpen(!isOpen);
-  const closeMenu = () => setIsOpen(false);
-
+  const [dark, setDark] = useState(false);
+  const handleToggleTheme = () => {
+    setDark(d => !d);
+    document.body.classList.toggle('dark-theme');
+  };
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-black/90">
-      <div className="max-w-7xl mx-auto">
-        <div className="flex justify-between items-center py-5 mx-auto c-space">
-          <a href="/" className="text-neutral-400 font-bold text-xl hover:text-white transition-colors">
-            Adrian
-          </a>
-
-          <button
-            onClick={toggleMenu}
-            className="text-neutral-400 hover:text-white focus:outline-none sm:hidden flex"
-            aria-label="Toggle menu">
-            <img src={isOpen ? 'assets/close.svg' : 'assets/menu.svg'} alt="toggle" className="w-6 h-6" />
-          </button>
-
-          <nav className="sm:flex hidden">
-            <NavItems />
+    <header
+      className={`fixed top-0 left-0 right-0 z-50 h-12 flex items-center ${dark ? 'navbar-dark' : ''}`}
+      style={{ borderRadius: 0, boxShadow: '4px 4px 0 #B0B0B0, 8px 8px 0 #B0B0B0', border: '4px solid #B0B0B0', background: '#F0F0F0' }}
+    >
+      <div className="max-w-7xl mx-auto w-full flex items-center h-full px-2">
+        <div className="flex items-center gap-2 h-full">
+          <img src="/assets/apple-1984.png" alt="Apple 1984 Logo" className="h-8 w-auto pixelated" style={{ imageRendering: 'pixelated', marginLeft: 0 }} />
+          <nav className="flex flex-row gap-4 items-center h-full ml-2" style={{alignItems:'center', height:'100%'}}>
+            {navLinks.map(link => (
+              <a
+                key={link.name}
+                href={link.href}
+                className="pixel-title"
+                style={{ fontSize: '0.9rem', color: '#222831', textShadow: '1px 1px 0 #B0B0B0', textDecoration: 'none', padding: '0 4px', display: 'flex', alignItems: 'center', height: '100%' }}
+              >
+                {link.name}
+              </a>
+            ))}
           </nav>
         </div>
-      </div>
-
-      <div className={`nav-sidebar ${isOpen ? 'max-h-screen' : 'max-h-0'}`}>
-        <nav className="p-5">
-          <NavItems onClick={closeMenu} />
-        </nav>
+        <button
+          onClick={handleToggleTheme}
+          className="ml-auto mr-2 flex items-center justify-center bg-transparent border-none outline-none"
+          style={{cursor:'pointer'}}
+          aria-label="Toggle dark mode"
+        >
+          <img
+            src={dark ? "/assets/dark-mode.svg" : "/assets/light-mode.svg"}
+            alt="Toggle theme"
+            className="h-8 w-8 pixelated"
+            style={{imageRendering:'pixelated'}}
+          />
+        </button>
       </div>
     </header>
   );

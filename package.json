@@ -1,5 +1,6 @@
 {
-  "name": "threejscc-portfolio",
+  "name": "anniversary-gift",
+  "homepage": "https://quillybardiard.github.io/anniversary-gift/",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -15,6 +16,7 @@
     "@react-three/drei": "^9.111.3",
     "@react-three/fiber": "^8.17.6",
     "@types/three": "^0.168.0",
+    "gh-pages": "^6.3.0",
     "gsap": "^3.12.5",
     "leva": "^0.9.35",
     "maath": "^0.10.8",

@@ -1,4 +1,5 @@
 @import url('https://fonts.cdnfonts.com/css/general-sans');
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -9,146 +10,140 @@
 }
 
 body {
-  background: #010103;
-  font-family: 'General Sans', sans-serif;
+  background: #222831;
+  font-family: 'Press Start 2P', 'General Sans', monospace, sans-serif;
+  color: #fffbe7;
+  image-rendering: pixelated;
+  /* Retro pixelated pink waves background */
+  position: relative;
+  min-height: 100vh;
+  /* Hapus background-image ombak lama agar tidak bentrok */
+  background-image: none;
+  cursor: url('/assets/flower-pixel.png'), auto;
 }
 
-@layer utilities {
-  .c-space {
-    @apply sm:px-10 px-5;
-  }
+/* Ombak pixelated retro pantai di bawah layar, bergerak animasi */
+.pixel-waves {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 33vh;
+  min-height: 280px;
+  width: 100vw;
+  z-index: 1;
+  pointer-events: none;
+  /* Layered ombak: pink pastel dan abu-abu muda */
+  background:
+    repeating-linear-gradient(-135deg, #c7abba 0 32px, #F0F0F0 32px 64px, transparent 64px 128px),
+    repeating-linear-gradient(135deg, #9c9090 0 12px, #d8c8c8 12px 24px, transparent 24px 48px),
+    repeating-linear-gradient(-135deg, #d1bfc9 0 8px, #F0F0F0 8px 16px, transparent 16px 32px);
+  background-size:
+    400% 1800px,
+    400% 600px,
+    400% 400px;
+  background-position:
+    0 0,
+    0 60px,
+    0 120px;
+  background-repeat: repeat-x;
+  animation: wave-move 8s linear infinite;
+  clip-path: polygon(
+    0% 40%, 10% 70%, 20% 55%, 30% 85%, 40% 65%, 50% 100%,
+    60% 65%, 70% 85%, 80% 55%, 90% 70%, 100% 40%, 100% 100%, 0% 100%
+  );
+  image-rendering: pixelated;
+}
 
-  .head-text {
-    @apply sm:text-4xl text-3xl font-semibold text-gray_gradient;
+@keyframes wave-move {
+  0% {
+    background-position:
+      0 0,
+      0 60px,
+      0 120px;
   }
+  100% {
+    background-position:
+      400px 0,
+      800px 60px,
+      1200px 120px;
+  }
+}
 
-  .nav-ul {
-    @apply flex flex-col items-center gap-4 sm:flex-row md:gap-6 relative z-20;
-  }
+.pixel-border {
+  border: 4px solid #00fff7 !important;
+  box-shadow: 0 0 0 4px #222831, 0 0 0 8px #00fff7 !important;
+  border-radius: 0 !important;
+}
 
-  .nav-li {
-    @apply text-neutral-400 hover:text-white font-generalsans max-sm:hover:bg-black-500 max-sm:w-full max-sm:rounded-md py-2 max-sm:px-5;
-  }
+.pixel-shadow {
+  box-shadow: 4px 4px 0 #393e46, 8px 8px 0 #00adb5 !important;
+}
 
-  .nav-li_a {
-    @apply text-lg md:text-base hover:text-white transition-colors;
-  }
+.pixel-btn {
+  background: #00adb5;
+  color: #222831;
+  border: 4px solid #fffbe7;
+  font-family: 'Press Start 2P', monospace;
+  font-weight: bold;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0;
+  letter-spacing: 2px;
+  image-rendering: pixelated;
+  transition: background 0.2s;
+  box-shadow: none;
+}
+.pixel-btn:hover {
+  background: #393e46;
+  color: #00fff7;
+}
 
-  .nav-sidebar {
-    @apply absolute left-0 right-0 bg-black-200 backdrop-blur-sm transition-all duration-300 ease-in-out overflow-hidden z-20 mx-auto sm:hidden block;
-  }
+.pixel-input {
+  border: 4px solid #00adb5;
+  background: #393e46;
+  color: #fffbe7;
+  border-radius: 0;
+  padding: 0.5rem 1rem;
+  font-family: 'Press Start 2P', monospace;
+  image-rendering: pixelated;
+}
 
-  .text-gray_gradient {
-    @apply bg-gradient-to-r from-[#BEC1CF] from-60% via-[#D5D8EA] via-60% to-[#D5D8EA] to-100% bg-clip-text text-transparent;
-  }
+.pixel-section {
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  background: #393e46;
+  border: 4px solid #00fff7;
+  box-shadow: 4px 4px 0 #393e46, 8px 8px 0 #00adb5;
+  border-radius: 0;
+}
 
-  /* button component */
-  .btn {
-    @apply flex gap-4 items-center justify-center cursor-pointer p-3 rounded-md bg-black-300  transition-all active:scale-95 text-white mx-auto;
-  }
+.pixel-title {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 2rem;
+  color: #00fff7;
+  text-shadow: 2px 2px 0 #222831;
+  letter-spacing: 2px;
+  margin-bottom: 1rem;
+}
 
-  .btn-ping {
-    @apply animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75;
-  }
+.pixel-text {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 1rem;
+  color: #fffbe7;
+  letter-spacing: 1px;
+}
 
-  .btn-ping_dot {
-    @apply relative inline-flex rounded-full h-3 w-3 bg-green-500;
-  }
+img, canvas {
+  image-rendering: pixelated;
+}
 
-  /* hero section */
-  .hero_tag {
-    @apply text-center xl:text-6xl md:text-5xl sm:text-4xl text-3xl font-generalsans font-black !leading-normal;
-  }
+.pixelated {
+  image-rendering: pixelated;
+}
 
-  /* about section */
-  .grid-container {
-    @apply w-full h-full border border-black-300 bg-black-200 rounded-lg sm:p-7 p-4 flex flex-col gap-5;
-  }
-
-  .grid-headtext {
-    @apply text-xl font-semibold mb-2 text-white font-generalsans;
-  }
-
-  .grid-subtext {
-    @apply text-[#afb0b6] text-base font-generalsans;
-  }
-
-  .copy-container {
-    @apply cursor-pointer flex justify-center items-center gap-2;
-  }
-
-  /* projects section  */
-  .arrow-btn {
-    @apply w-10 h-10 p-3 cursor-pointer active:scale-95 transition-all rounded-full arrow-gradient;
-  }
-
-  .tech-logo {
-    @apply w-10 h-10 rounded-md p-2 bg-neutral-100 bg-opacity-10 backdrop-filter backdrop-blur-lg flex justify-center items-center;
-  }
-
-  /* clients section */
-  .client-container {
-    @apply grid md:grid-cols-2 grid-cols-1 gap-5 mt-12;
-  }
-
-  .client-review {
-    @apply rounded-lg md:p-10 p-5 col-span-1 bg-black-300 bg-opacity-50;
-  }
-
-  .client-content {
-    @apply flex lg:flex-row flex-col justify-between lg:items-center items-start gap-5 mt-7;
-  }
-
-  /*  work experience section */
-  .work-container {
-    @apply grid lg:grid-cols-3 grid-cols-1 gap-5 mt-12;
-  }
-
-  .work-canvas {
-    @apply col-span-1 rounded-lg bg-black-200 border border-black-300;
-  }
-
-  .work-content {
-    @apply col-span-2 rounded-lg bg-black-200 border border-black-300;
-  }
-
-  .work-content_container {
-    @apply grid grid-cols-[auto_1fr] items-start gap-5  transition-all ease-in-out duration-500 cursor-pointer hover:bg-black-300 rounded-lg sm:px-5 px-2.5;
-  }
-
-  .work-content_logo {
-    @apply rounded-3xl w-16 h-16 p-2 bg-black-600;
-  }
-
-  .work-content_bar {
-    @apply flex-1 w-0.5 mt-4 h-full bg-black-300 group-hover:bg-black-500 group-last:hidden;
-  }
-
-  /* contact section */
-  .contact-container {
-    @apply max-w-xl relative z-10 sm:px-10 px-5 mt-12;
-  }
-
-  .field-label {
-    @apply text-lg text-white-600;
-  }
-
-  .field-input {
-    @apply w-full bg-black-300 px-5 py-2 min-h-14 rounded-lg placeholder:text-white-500 text-lg text-white-800 shadow-black-200 shadow-2xl focus:outline-none;
-  }
-
-  .field-btn {
-    @apply bg-black-500 px-5 py-2 min-h-12 rounded-lg shadow-black-200 shadow-2xl flex justify-center items-center text-lg text-white gap-3;
-  }
-
-  .field-btn_arrow {
-    @apply w-2.5 h-2.5 object-contain invert brightness-0;
-  }
-
-  /*  footer */
-  .social-icon {
-    @apply w-12 h-12 rounded-full flex justify-center items-center bg-black-300 border border-black-200;
-  }
+/* Utility: gunakan class pixelated di elemen lain jika perlu */
+.pixelated {
+  image-rendering: pixelated;
 }
 
 .waving-hand {
@@ -194,4 +189,113 @@ body {
   100% {
     transform: rotate(0deg);
   }
+}
+
+body.dark-theme {
+  background: #18181b !important;
+  color: #00fff7 !important;
+  transition: background 0.3s, color 0.3s;
+}
+.dark-theme .pixel-waves {
+  background:
+    repeating-linear-gradient(-135deg, #00fff7 0 32px, #ff69b4 32px 64px, transparent 64px 128px),
+    repeating-linear-gradient(135deg, #fff 0 12px, #00fff7 12px 24px, transparent 24px 48px),
+    repeating-linear-gradient(-135deg, #ff69b4 0 8px, #00fff7 8px 16px, transparent 16px 32px);
+  background-size:
+    400% 1000px,
+    400% 200px,
+    400% 400px;
+  background-position:
+    0 0,
+    0 60px,
+    0 120px;
+}
+.dark-theme .pixel-title, .dark-theme .hero-title {
+  color: #00fff7 !important;
+  text-shadow: 2px 2px 0 #18181b, 0 0 8px #00fff7;
+  transition: color 0.3s, text-shadow 0.3s;
+}
+.dark-theme .pixel-btn {
+  background: #00fff7 !important;
+  color: #18181b !important;
+  border: 4px solid #ff69b4 !important;
+  box-shadow: 0 0 0 4px #18181b, 0 0 0 8px #00fff7 !important;
+}
+.dark-theme .pixel-btn:hover {
+  background: #ff69b4 !important;
+  color: #00fff7 !important;
+}
+.dark-theme .pixel-input {
+  border: 4px solid #00fff7 !important;
+  background: #23232b !important;
+  color: #00fff7 !important;
+}
+.dark-theme .pixel-section {
+  background: #23232b !important;
+  border: 4px solid #00fff7 !important;
+  box-shadow: 4px 4px 0 #18181b, 8px 8px 0 #00fff7 !important;
+}
+.dark-theme .pixel-shadow {
+  box-shadow: 4px 4px 0 #00fff7, 8px 8px 0 #ff69b4 !important;
+}
+.dark-theme .pixel-popup {
+  background: #23232b !important;
+  color: #00fff7 !important;
+  border-color: #00fff7 !important;
+  box-shadow: 8px 8px 0 #00fff7 !important;
+}
+.dark-theme .pixel-border {
+  border: 4px solid #00fff7 !important;
+  box-shadow: 0 0 0 4px #18181b, 0 0 0 8px #00fff7 !important;
+}
+.dark-theme .pixel-text {
+  color: #00fff7 !important;
+}
+.dark-theme .hero-section {
+  background: #18181b !important;
+}
+.dark-theme .navbar-dark {
+  background: #23232b !important;
+  border-color: #00fff7 !important;
+  box-shadow: 4px 4px 0 #00fff7, 8px 8px 0 #ff69b4 !important;
+}
+.dark-theme .pixelated {
+  filter: drop-shadow(0 0 4px #00fff7);
+}
+.dark-theme .popup-title-8tahun, .dark-theme .popup-desc-8tahun {
+  color: #00fff7 !important;
+  text-shadow: 0 0 8px #00fff7;
+}
+
+/* Tambahan: Transisi halus untuk elemen utama */
+.pixel-title, .hero-title, .pixel-btn, .pixel-input, .pixel-section {
+  transition: all 0.3s ease;
+}
+.hero-section {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  background: #F0F0F0;
+}
+.hero-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  min-height: 60vh;
+}
+.hero-title {
+  font-family: 'Press Start 2P', monospace;
+  text-align: center;
+  font-size: clamp(2.5rem, 8vw, 6rem);
+  line-height: 1.1;
+  color: #222831;
+  text-shadow: 2px 2px 0 #B0B0B0;
+  letter-spacing: 2px;
 }
