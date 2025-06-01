@@ -19,7 +19,7 @@ const Navbar = () => {
     >
       <div className="max-w-7xl mx-auto w-full flex items-center h-full px-2">
         <div className="flex items-center gap-2 h-full">
-          <img src="/assets/apple-1984.png" alt="Apple 1984 Logo" className="h-8 w-auto pixelated" style={{ imageRendering: 'pixelated', marginLeft: 0 }} />
+          <img src={"assets/apple-1984.png"} alt="Apple 1984 Logo" className="h-8 w-auto pixelated" style={{ imageRendering: 'pixelated', marginLeft: 0 }} />
           <nav className="flex flex-row gap-4 items-center h-full ml-2" style={{alignItems:'center', height:'100%'}}>
             {navLinks.map(link => (
               <a
@@ -40,7 +40,7 @@ const Navbar = () => {
           aria-label="Toggle dark mode"
         >
           <img
-            src={dark ? "/assets/light-mode.svg" : "/assets/dark-mode.svg"}
+            src={dark ? "assets/light-mode.svg" : "assets/dark-mode.svg"}
             alt="Toggle theme"
             className="h-8 w-8 pixelated"
             style={{imageRendering:'pixelated'}}

@@ -103,11 +103,11 @@ const Hero = () => {
       <PixelPopup open={showPopup} onClose={handleClosePopup} title="Spotlight">
         <span className="block text-center mt-4">HAPPY ANNIVERSARY💟</span>
         <div className="flex flex-wrap gap-0 justify-center items-center">
-          <img src="/assets/selfie1.png" alt="img1" className="w-24 h-40 object-contain rounded-none" />
-          <img src="/assets/selfie2.png" alt="img2" className="w-24 h-40 object-contain rounded-md" />
-          <img src="/assets/selfie.png" alt="img3" className="w-24 h-40 object-contain rounded-md" />
-          <img src="/assets/IMG_0040.png" alt="img4" className="w-24 h-40 object-contain rounded-md" />
-          <img src="/assets/IMG_0037.png" alt="img5" className="w-24 h-49 object-contain rounded-md" />
+          <img src="assets/selfie1.png" alt="img1" className="w-24 h-40 object-contain rounded-none" />
+          <img src="assets/selfie2.png" alt="img2" className="w-24 h-40 object-contain rounded-md" />
+          <img src="assets/selfie.png" alt="img3" className="w-24 h-40 object-contain rounded-md" />
+          <img src="assets/IMG_0040.png" alt="img4" className="w-24 h-40 object-contain rounded-md" />
+          <img src="assets/IMG_0037.png" alt="img5" className="w-24 h-49 object-contain rounded-md" />
         </div>
         
       </PixelPopup>
@@ -157,7 +157,7 @@ const Hero = () => {
           style={{ position: 'fixed', left: mailPos.x, top: mailPos.y, zIndex: 60, cursor: dragging ? 'grabbing' : 'grab' }}
         >
           <img
-            src="/assets/flower-pixel.png"
+            src="assets/flower-pixel.png"
             alt="Flower Pixel"
             className="w-12 h-12 cursor-pointer hover:scale-110 transition-transform duration-200 select-none"
             onMouseDown={handleMailMouseDown}
@@ -169,7 +169,7 @@ const Hero = () => {
 
       {/* Audio Player - pojok kanan bawah */}
       <div style={{position: 'fixed', right: 24, bottom: 24, zIndex: 100}}>
-        <audio ref={audioRef} src="/assets/Digital-Love.mp3" loop onEnded={() => setIsPlaying(false)} />
+        <audio ref={audioRef} src="assets/Digital-Love.mp3" loop onEnded={() => setIsPlaying(false)} />
         <button
           onClick={handleAudioPlayPause}
           className=" text-white shadow-lg p-3 flex items-center justify-center hover:bg-black-500 transition-colors"
@@ -177,9 +177,9 @@ const Hero = () => {
           aria-label={isPlaying ? 'Pause music' : 'Play music'}
         >
           {isPlaying ? (
-            <img src="/assets/Pictogrammers-Material-Light-Music.svg" alt="Pause" className="w-8 h-8 pixelated" style={{imageRendering:'pixelated'}} />
+            <img src="assets/Pictogrammers-Material-Light-Music.svg" alt="Pause" className="w-8 h-8 pixelated" style={{imageRendering:'pixelated'}} />
           ) : (
-            <img src="/assets/Pictogrammers-Material-Light-Music-off.svg" alt="Play" className="w-8 h-8 pixelated" style={{imageRendering:'pixelated'}} />
+            <img src="assets/Pictogrammers-Material-Light-Music-off.svg" alt="Play" className="w-8 h-8 pixelated" style={{imageRendering:'pixelated'}} />
           )}
         </button>
       </div>
