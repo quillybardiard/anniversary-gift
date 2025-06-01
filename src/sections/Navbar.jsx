@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 
 const navLinks = [
   { name: 'file', href: '#home' },
@@ -40,7 +40,7 @@ const Navbar = () => {
           aria-label="Toggle dark mode"
         >
           <img
-            src={dark ? "/assets/dark-mode.svg" : "/assets/light-mode.svg"}
+            src={dark ? "/assets/light-mode.svg" : "/assets/dark-mode.svg"}
             alt="Toggle theme"
             className="h-8 w-8 pixelated"
             style={{imageRendering:'pixelated'}}

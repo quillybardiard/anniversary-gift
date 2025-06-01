@@ -1,4 +1,4 @@
-import React, { Suspense, useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { useMediaQuery } from 'react-responsive';
 import { calculateSizes } from '../constants/index.js';
 import PixelPopup from '../components/PixelPopup.jsx';
